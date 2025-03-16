@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect } from 'react';
-import { applyTheme } from "@lib/theme";
+import { applyTheme, getCurrentTheme } from "@lib/theme";
 
 export default function ThemeSwitcher()
 {
   useEffect(() =>
   {
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    const currentTheme = getCurrentTheme();
     applyTheme(currentTheme);
   }, []);
 
