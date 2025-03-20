@@ -1,27 +1,12 @@
 "use client";
 
-import { useEffect } from 'react';
-import { applyTheme, getCurrentTheme } from "@lib/theme";
+import Switch from './Switch';
+import useTheme from '@/app/hooks/useTheme';
 
 export default function ThemeSwitcher()
 {
-  useEffect(() =>
-  {
-    const currentTheme = getCurrentTheme();
-    applyTheme(currentTheme);
-  }, []);
-
-  const toggleTheme = () =>
-  {
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('theme', newTheme);
-    applyTheme(newTheme);
-  };
-
+  const { theme, toggleTheme } = useTheme();
   return (
-    <button onClick={toggleTheme}>
-      Toggle Theme
-    </button>
+    <Switch isOn={theme !== "light"} handleToggle={toggleTheme} />
   );
 }

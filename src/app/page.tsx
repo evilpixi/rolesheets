@@ -1,27 +1,51 @@
-import Header from "@/components/Header";
+'use client';
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image";
+import useTheme from "./hooks/useTheme";
 
 export default function Home()
 {
+  const { theme } = useTheme();
+  const gradientColor = theme === "light"
+    ? "linear-gradient(to bottom, rgba(255,255,255,0) 30%, rgba(255,255,255,0.3) 35%, rgba(255,255,255,1) 55%)"
+    : "linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.3) 35%, rgba(0,0,0,1) 60%)";
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="relative min-h-dvh flex flex-col">
+      <Navbar />
+      <main style={{
+        background: gradientColor,
+      }}
+        className="relative flex flex-col w-dvw h-full items-center justify-center">
+        <h1 className="text-4xl font-semibold font-playfair text-primary mt-60 mb-40 filter drop-shadow-lg">
+          Rolesheets
+        </h1>
 
-      <div className="flex flex-col min-h-screen lg:flex-row">
-        {/* Main Content */}
-        <main className="flex-1 bg-green-500 p-4 text-white lg:order-3">
-          <h2 className="text-xl font-semibold">Main Content</h2>
-          <p>This is the main content area.</p>
-        </main>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
+        <p>lorem ipsum</p>
 
-        {/* Sidebar */}
-        <aside className="bg-red-500 p-4 text-white lg:order-1">
-          <h2 className="text-xl font-semibold">Sidebar</h2>
-          <p>This is the sidebar.</p>
-        </aside>
-      </div>
-
+      </main>
       <Footer />
+      <Image
+        src="/images/hero.png"
+        alt="hero"
+        layout="fill"
+        objectFit="cover"
+        className="absolute top-0 left-0 w-full h-full -z-10"
+      />
     </div>
   );
 }
